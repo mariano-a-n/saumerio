@@ -1,0 +1,39 @@
+<table class ="table">
+    <thead>
+        <tr>
+            <th>favoritos</th>
+            <th>Nombre</th>
+            <th>tipo</th>
+            <th>precio</th>
+            <th>stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (saume of saumerio$ | async; track saume.id) {
+            <tr>
+                <td><input type="checkbox" [(ngModel)]="saume.favorito"></td>
+                <td>{{saume.nombre}}</td>
+                <td>{{saume.tipo}}</td>
+                <td>{{saume.precio}}</td>
+                <td>@if(saume.stock <= 0){
+                    sin stock
+                }
+                @else {
+                    {{saume.stock}} 
+                }
+                </td>
+                <td>
+                    @if(saume.stock > 0){
+                        <!-- <app-input-integer [(cantidad)]="saume.cantidad"  [(stock)]="saume.stock" ></app-input-integer> -->
+                        <app-input-integer [saume]="saume" ></app-input-integer>
+                    }
+                </td>
+            </tr>
+        }
+        @empty {
+            <tr>
+                <td colspan="4">huubo un proble vuelva mas tarde </td>
+            </tr>
+        }
+    </tbody>
+</table>

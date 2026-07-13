@@ -1,0 +1,48 @@
+<p>carrito de compras </p>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @for (compra of listaCarrito; track compra.id) {
+        <!-- @for (compra of listaCarrito$ |async ; track compra.id) { -->
+            <tr>
+                <td>{{ compra.nombre }}</td>
+                <td>{{ compra.cantidad }}</td>
+                <td>{{ compra.precio }}</td>
+                <td>{{compra.cantidad*compra.precio}}</td>
+                <td><button type="button"  (click)="quitarDeLaLista(compra.id)" >quitar producto </button></td>
+            </tr>
+        }
+        @empty {
+            <tr>
+                <td colspan="5">El carrito está vacío.</td>
+            </tr>
+        }
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="4">Total</td>
+            <td>{{totalGeneral}}</td>
+        </tr>
+    </tfoot>
+</table>
+@if (totalGeneral !== 0) {
+    <div>
+        <button type="button" (click)="cancelarLaCompra()">cancelar compra</button>
+        <button type="button" (click)="finalizarCompra()"> Finalizar compra </button>
+    </div>
+}
+@else{
+    <div>
+        <p> agrega productos al carrito </p>
+    </div>
+}
+

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 
 @Component({
@@ -7,5 +8,5 @@ import { Component, signal } from '@angular/core';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('saumerio');
+  protected readonly title = 'saumerio';
 }
