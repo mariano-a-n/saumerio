@@ -29,6 +29,8 @@ export class SaumeriosList {
   // }
 
   ngOnInit():void{
-      this.saumerio$ = this.samuerioDataServis.getAll();
+      // this.saumerio$ = this.samuerioDataServis.getAll();
+      this.samuerioDataServis.cargarSaumerios();
+      this.saumerio$ = this.samuerioDataServis.lista$;
     }
 }

@@ -59,8 +59,9 @@ export class Carrito {
             console.log(`Producto ${compra.nombre} actualizado`);
             console.log(cantidad);
             if (cantidad == this.listaCarrito.length) {
-              console.log("entro");
               this.cartS.cancelarCompra();
+              this.protocolo.cargarSaumerios()
+              console.log("compra completada");
             }
           }
         });

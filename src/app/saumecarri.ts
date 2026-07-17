@@ -23,7 +23,7 @@ export class Saumecarri {
     // si resive False (entra / crea un nuevo obj ) y resive TRUE (va al else / le suma x a la cantidad del obj existente)
     if(!item) {
       this._listaCompra.push({ ... saumerio});
-    } else {
+    } else if(this.sePuedeAgregarAlCarro(item,saumerio)) {
       item.cantidad += saumerio.cantidad;
     }
     console.log(this._listaCompra);
@@ -31,7 +31,9 @@ export class Saumecarri {
     this.listaDeCompra.next(this._listaCompra);
   }
 
-  
+  sePuedeAgregarAlCarro(item :Saumerio ,saumerio :Saumerio):boolean {
+    return item.cantidad + saumerio.cantidad <= item.stock;
+  }
 
   //forma tradicional
   // quitarDeLaLista(id: number): void {
